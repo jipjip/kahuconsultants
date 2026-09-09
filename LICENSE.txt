@@ -1,0 +1,25 @@
+Copyright (c) 2026 Kahu Consultants. All rights reserved.
+
+This repository and all of its contents, including but not limited to
+the source code, design, layout, branding, logo, and images, are the
+property of Kahu Consultants and are protected by copyright and other
+applicable laws.
+
+No part of this repository may be copied, reproduced, distributed,
+modified, or used in any form, or by any means, without the prior
+written permission of Kahu Consultants, except as strictly necessary
+to view the source on GitHub.
+
+This repository is made public for transparency and deployment
+purposes only. Making it public does not grant any license to use,
+copy, or reuse its contents.
+
+Third-party fonts
+------------------
+This repository includes the Inter typeface (public/Inter.woff2 and
+public/InterVariable.woff2), which is not covered by the notice above.
+Inter is Copyright (c) 2016 The Inter Project Authors
+(https://github.com/rsms/inter) and is licensed separately under the
+SIL Open Font License, Version 1.1. The full license text is bundled
+at public/fonts/OFL.txt and is also available at
+https://openfontlicense.org.
