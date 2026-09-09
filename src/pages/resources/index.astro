@@ -1,0 +1,25 @@
+---
+/* resources/index.astro */
+
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import ArticleList from '@components/ArticleList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+---
+
+<Layout
+  pageName="Resources for sustainability professionals"
+  pageDescription="Blogs, articles, downloads and more from Kahu Consultants.">
+	<Hero 
+		title = "Resources for <em>sustainability</em> professionals."
+		description = "Blogs, articles, downloads and more."
+		heroType="abstr1"
+	/>
+
+	<ArticleList />
+
+	<ContactBand 
+		message="Ready to navigate <em>sustainability</em> with confidence?"
+		buttonText="Start a conversation"
+		buttonUrl="/contact" />
+</Layout>

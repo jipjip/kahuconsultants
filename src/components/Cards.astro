@@ -1,0 +1,23 @@
+---
+/* Cards.astro */
+
+import "@styles/Cards.css";
+---
+
+{ Astro.props.cards && 
+  <div class={`cntr --cntr-g --cntr-11 ${Astro.props.type}`}>
+    { Astro.props.title && 
+      <h2 
+        class="js-obs"
+        set:html={Astro.props.title} />
+    }
+    <div class={`cntr --cntr-g cards`}>
+      { Astro.props.cards.map((card:any) => (
+        <div class="card card__usp">
+          <h3 set:html={card.title}/>
+          <div class="card__body" set:html={card.body}/>
+        </div>
+      ))}
+    </div>
+  </div>
+}

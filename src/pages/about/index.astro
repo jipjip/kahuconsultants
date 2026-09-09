@@ -1,0 +1,72 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import MagicContentBox from '@components/MagicContentBox.astro';
+import QuoteBlock from '@components/QuoteBlock.astro';
+import NumberedList from '@components/NumberedList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+
+---
+
+<Layout
+  pageName="About Kahu"
+  pageDescription="Kahu Consultants was founded on the belief that organisations deserve advisory partners who genuinely invest in understanding their objectives — and who measure success by client outcomes, not billable hours.">
+  <Hero 
+    title = "A different kind of <em>advisory firm</em>."
+    eyebrow = "About Kahu"
+    description = "Kahu Consultants was founded on the belief that organisations deserve advisory partners who genuinely invest in understanding their objectives — and who measure success by client outcomes, not billable hours."
+    heroType = "light"
+  />
+
+  <section>
+    <div class="cntr --cntr-g">
+      <MagicContentBox
+        title="We are a boutique ESG advisory practice."
+        contentItems = {[
+          {
+            paragraph: "In a market crowded with large consultancies and generalist advisory firms, Kahu Consultants occupies a deliberate position: small enough to be genuinely attentive, experienced enough to be genuinely useful."
+          },{
+            paragraph: "Our team brings deep expertise across EcoVadis ratings, CDP disclosure, ESG reporting frameworks, and sustainability strategy. We have supported organisations across a range of sectors — from manufacturing and supply chain businesses to financial services and professional services firms."
+          },{
+            paragraph: "What sets us apart is not just technical knowledge. It is the commitment we bring to understanding each client's specific context, constraints, and ambitions — and the rigour with which we tailor our support accordingly."
+          }
+        ]} />
+
+      <QuoteBlock quote="We work with clients, not for them. The distinction matters: it means shared ownership of outcomes, honest counsel, and a partnership built for the long term." />
+      
+    </div>
+  </section>
+
+  <section class="--s-div-top">
+    <div class="cntr --cntr-g --cntr-11">
+      <MagicContentBox
+        title="How we engage"
+        eyebrow="Our Approach"
+      />
+
+      <NumberedList list={[
+        {
+          title: "Client Objectives First",
+          content: "Every engagement begins with a thorough discovery phase. Before we offer any recommendations, we take the time to understand your business, your stakeholders, your existing sustainability activities, and what success genuinely looks like for you."
+        },{
+          title: "Tailored, Not Templated",
+          content: " We do not believe in off-the-shelf solutions. The advice we provide, the plans we develop, and the support we offer are always built around your specific context. We adapt our approach as your needs evolve."
+        },{
+          title: "Transparent & Honest",
+          content: "We tell clients what they need to hear, not what they want to hear. If a particular approach is unlikely to achieve your objectives, we will say so — and propose an alternative that will. Integrity is foundational to everything we do."
+        },{
+          title: "Value for Money",
+          content: "As a boutique firm, our cost base is lean and our overhead is low. We pass that efficiency on to our clients, offering high-quality advisory support at a price point that delivers genuine value — with no unnecessary scope or hidden fees."
+        },{
+          title: "Long-Term Partnership",
+          content: "Many of our client relationships extend well beyond an initial engagement. We invest in understanding your organisation so that we can provide better, faster support as your sustainability journey develops over time."
+        }
+      ]} />
+    </div>
+  </section>
+  
+  <ContactBand 
+		message="Ready to work with an advisor who <em>truly listens</em>?"
+		buttonText="Get in Touch"
+		buttonUrl="/contact" />
+</Layout>

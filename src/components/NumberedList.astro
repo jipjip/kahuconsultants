@@ -1,0 +1,17 @@
+---
+/* NumberedList.astro */
+import "@styles/NumberedList.css";
+
+---
+{ Astro.props.list && 
+  <ul class="numbered__list">
+    { Astro.props.list.map((item:any) => (
+      <li>
+        <div class="nlist__item">
+          <h3 set:html={item.title} />
+          <p set:html={item.content} />
+        </div>
+      </li>
+    ))}
+  </ul>
+}

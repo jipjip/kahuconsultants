@@ -1,0 +1,37 @@
+ul.numbered__list { 
+  --h3-fs: 1rem;
+  --h3-tt: uppercase;
+  --h3-fw: 200;
+
+  counter-reset: item;
+  li {
+    counter-increment: item;
+    padding-block: 1rem;
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 1.5rem;
+    & + li {
+      border-top: 1px solid var(--c-accent30)
+    }
+    &::before {
+      content: counter(item, decimal-leading-zero);
+      font-size: 1.8rem;
+      font-weight: 200;
+      color: var(--c-text-contrast);
+      background: var(--c-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 3rem;
+      width: 3rem;
+      flex-shrink: 0;
+      letter-spacing: -0.02rem;
+    }
+  }
+}
+
+.nlist__item {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}

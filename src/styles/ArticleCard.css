@@ -1,0 +1,46 @@
+.card__article {
+  --ga-c: var(--c-text);
+  --gah-td: none;
+
+  position: relative;
+  display: grid;
+  grid-template-rows: subgrid;
+  height: fit-content;
+  background-color: var(--c-sup2);
+  border: 1px solid var(--ca-bc, var(--c-accent30));
+
+  &:hover {
+    --ca-bc: var(--c-accent);
+    --cardh-bgg: var(--c-sup1);
+  }
+}
+
+.card__bg {
+  min-height: 25rem;
+
+  img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    max-width: 100%;
+  }
+}
+
+.card__fg {
+  background: linear-gradient(oklch( from var(--c-sup1) l c h / .2), var(--cardh-bgg, var(--c-sup2)));
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  align-items: end;
+  gap: 1rem;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.card__date {
+  font-size: .75rem;
+}

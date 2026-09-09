@@ -1,0 +1,32 @@
+.inlay {
+  background-color: var(--c-bg-inlay);
+  height: fit-content;
+  min-height: 15rem;
+  padding: 1rem;
+}
+
+.mcbx__list {
+  li {
+    display: flex;
+    gap: 1rem;
+    padding-block: .5rem;
+
+    .check {
+      color: var(--c-accent);
+      font-weight: 600;
+    }
+    
+    & + li {
+      border-top: 1px solid var(--c-accent30);
+    }
+  }
+
+}
+
+@media(width>=768px){
+  .--cntr-rev {
+    .inlay {
+      order: -1;
+    }
+  }
+}

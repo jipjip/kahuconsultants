@@ -1,0 +1,8 @@
+.highlight__media {
+  align-content: center;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}

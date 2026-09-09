@@ -1,0 +1,24 @@
+.quote__block {
+  position: relative;
+  background-color: var(--c-brand);
+  color: var(--c-text-contrast);
+  padding-block: 5rem;
+  padding-inline: 2rem;
+  font-size: 1.25rem;
+  align-content: center;
+
+  blockquote {
+    position: relative;
+
+    &::before {
+      content: '“';
+      position: absolute;
+      font-size:15rem;
+      display: block;
+      font-family: serif;
+      opacity: .2;
+      top: -4rem;
+      line-height: 1;
+    }
+  }
+}

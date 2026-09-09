@@ -1,0 +1,12 @@
+---
+/* Quote.astro */
+---
+{ Astro.props.quote &&
+  <section class="--s-quote">
+    <div class="cntr --cntr-quote">
+      <div 
+        class="as-h2"
+        set:html={Astro.props.quote} />
+    </div>
+  </section>
+}

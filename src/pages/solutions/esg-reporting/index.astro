@@ -1,0 +1,81 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import MagicContentBox from '@components/MagicContentBox.astro';
+import Cards from '@components/Cards.astro';
+import FeatureList from '@components/FeatureList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+
+---
+
+<Layout
+  pageName="ESG Reporting that tells your real story."
+  pageDescription="Helping organisations build credible, standards-aligned ESG reports that satisfy stakeholders and reflect genuine progress.">
+	<Hero 
+    title = "ESG Reporting <em>that tells your</em> real story."
+    description = "Helping organisations build credible, standards-aligned ESG reports that satisfy stakeholders and reflect genuine progress."
+    heroType = "service abstr1"
+  />
+  
+  <section>
+    <div class="cntr --cntr-g --cntr-13">
+      <MagicContentBox
+        title="Reporting that goes beyond compliance"
+        contentItems = {[
+          {
+            paragraph: "The ESG reporting landscape is evolving rapidly. With frameworks such as GRI, SASB, ISSB, and CSRD now shaping expectations across geographies and sectors, organisations face the challenge of producing reports that are both credible to sophisticated stakeholders and comprehensible to broader audiences."
+          },{
+            paragraph: "Kahu Consultants supports organisations in developing ESG reports that are accurate, well-structured, and strategically positioned. We help you select the right reporting frameworks for your context, establish the data collection processes to support them, and produce a narrative that honestly reflects both your achievements and your ongoing commitments."
+          },{
+            paragraph: "We believe good reporting is not just about ticking boxes — it is about building trust. Our advisors work with you to ensure your report stands up to scrutiny while communicating your sustainability story with authenticity."
+          }
+        ]} />
+      
+      <FeatureList 
+        title="Frameworks & Standards"
+        features={[
+          { 
+            feature: "GRI Standards (Universal & Topic)"
+          },{ 
+            feature: "ISSB / IFRS S1 & S2"
+          },{ 
+            feature: "CSRD / ESRS"
+          },{ 
+            feature: "SASB Standards"
+          },{ 
+            feature: "TCFD-aligned reporting"
+          },{ 
+            feature: "UN SDG mapping"
+          },{ 
+            feature: "Integrated reporting principles"
+          }
+        ]}/>
+    </div>
+  </section>
+
+  <section>
+    <Cards 
+      type="process__cards"
+      title="Our ESG Reporting Process"
+      cards={[
+        {
+          title: "Framework Selection",
+          body: "We help you determine which frameworks and standards are most relevant given your sector, geography, and stakeholder requirements."
+        }, {
+          title: "Materiality & Data",
+          body: "We support materiality assessments and establish data collection processes across your organisation to gather the metrics you need."
+        }, {
+          title: "Report Development",
+          body: "We draft, review, or quality-assure your ESG report — ensuring consistency, accuracy, and a compelling sustainability narrative."
+        }, {
+          title: "Continuous Improvement",
+          body: "Post-publication, we help you build better data infrastructure and processes to raise report quality year on year."
+        }
+    ]} />
+  </section>
+  
+  <ContactBand 
+		message="Build an ESG report <em>you can stand behind</em>."
+		buttonText="Speak to an Advisor"
+		buttonUrl="/contact" />
+</Layout>

@@ -1,0 +1,8 @@
+---
+import "@styles/QuoteBlock.css";
+---
+{ Astro.props.quote && 
+  <div class="quote__block">
+    <blockquote set:html={Astro.props.quote} />
+  </div>
+}

@@ -1,0 +1,103 @@
+---
+import "@styles/BlogArticle.css";
+import "@styles/Hero.css";
+
+import { render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import { getFilteredArticles } from "../../lib/getArticles";
+import Picture from "astro/components/Picture.astro";
+import ContactBand from "@components/navigation/layouts/ContactBand.astro";
+
+export async function getStaticPaths() {
+  const posts = await getFilteredArticles();
+  return posts.map((entry:any) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+
+const meta = Astro.props.entry.data,
+      { Content, headings } = await render(Astro.props.entry);
+
+const articles = await getFilteredArticles(),
+      thisArticle = articles.findIndex(a => a.id === Astro.props.entry.id),
+      nextArticle = thisArticle > 0 ? articles[thisArticle-1] : null,
+      prevArticle = thisArticle < articles.length ? articles[thisArticle+1] : null
+---
+
+<Layout 
+  pageName={meta.seoTitle} 
+  pageDescription={meta.seoDescription}
+  type="post"
+  ogType="article"
+  publishedTime={meta.datePublished?.toISOString()}>
+  <section 
+    id="top"
+    class="abstr1 --s-hero">
+    <div class="cntr --cntr-g --cntr-11">
+      { 
+        meta.title && 
+          <h1 
+            set:html={meta.title} />
+      }
+      <div class="cntr --cntr-g post__meta">
+        <div class="tags">
+          {
+            meta.tags.map((tag:string) => (
+              <span 
+                class="tag">{tag}</span>
+            ))
+          }
+        </div>
+        {
+          meta.datePublished &&
+            <div class="art__date">{meta.datePublished?.toLocaleDateString()}</div>
+        }
+      </div>
+      { 
+        meta.intro && 
+          <div
+            class="cntr intro" 
+            set:html={meta.intro} />
+      }
+    </div>
+  </section>
+  <section>
+    <article>
+      <div class="cntr --cntr-g --cntr-13">
+        <div class="toc">
+          <h2>On this page</h2>
+          <nav class="toc__items">
+            <a 
+              class="toc__top"
+              href="#top">Top</a>
+            {headings.map(h => (
+              <a href={`#${h.slug}`}>{h.text}</a>
+            ))}
+          </nav>
+        </div>
+        <div class="cntr">
+          {
+            meta.heroImage && 
+              <div class="cntr">
+                <Picture
+                  src={meta.heroImage}
+                  alt="An example image"
+                  formats={['avif', 'webp']}
+                  widths={[400, 768, 800]}
+                  sizes="(max-width: 768px) calc(100vw - 32px), 800px"
+                />
+              </div>
+          }
+          <Content />
+        </div>
+
+      </div>
+    </article>
+  </section>
+
+  	<ContactBand 
+		message={meta.contactMessage || "Ready to navigate <em>sustainability</em> with confidence?"}
+		buttonText={meta.contactButtonText || "Start a conversation"}
+		buttonUrl="/contact" />
+</Layout>

@@ -1,0 +1,82 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import MagicContentBox from '@components/MagicContentBox.astro';
+import Cards from '@components/Cards.astro';
+import FeatureList from '@components/FeatureList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+
+---
+
+<Layout
+  pageName="EcoVadis Advisory that moves the needle."
+  pageDescription="Expert support to help your organisation understand, improve, and maximise your EcoVadis sustainability rating.">
+	<Hero 
+    title = "EcoVadis Advisory that <em>moves the needle.</em>"
+    description = "Expert support to help your organisation understand, improve, and maximise your EcoVadis sustainability rating."
+    heroType = "service abstr1"
+  />
+
+  <section>
+    <div class="cntr --cntr-g --cntr-13">
+      <MagicContentBox
+        title="More than just submission support"
+        contentItems = {[
+          {
+            paragraph: "If you've been asked to complete an EcoVadis assessment — or improve on a previous score — you'll know the pressure that comes with it. Supply chain expectations have shifted, and a strong rating is now a condition of doing business in many sectors. The challenge is knowing where to focus and how to make progress that actually sticks."
+          },{
+            paragraph: "Kahu Consultants offers structured, expert-led EcoVadis advisory that goes well beyond document preparation. We help you understand precisely what EcoVadis is measuring, where your gaps lie, and how to address them in a way that is both credible and sustainable. Our advisors have direct experience of EcoVadis methodology from the inside, which means we understand exactly what assessors are looking for."
+          },{
+            paragraph: "Whether you are completing your first assessment, seeking to move from Bronze to Silver, or targeting Gold, we build a programme tailored to your starting point, your timeline, and your operational context."
+          }
+        ]} />
+      
+      <FeatureList 
+        title="What We Cover"
+        features={[
+          { 
+            feature: "Gap analysis against EcoVadis criteria"
+          },{ 
+            feature: "Policy and procedure development"
+          },{ 
+            feature: "Evidence gathering and documentation"
+          },{ 
+            feature: "Questionnaire completion support"
+          },{ 
+            feature: "Scorecard interpretation and benchmarking"
+          },{ 
+            feature: "Appeal preparation and submission"
+          },{ 
+            feature: "Year-on-year improvement planning"
+          }
+        ]}/>
+    </div>  
+  </section>
+
+  <section>
+    <Cards 
+      type="process__cards"
+      title="Our EcoVadis Engagement Model"
+      cards={[
+        {
+          title: "Discovery & Gap Analysis",
+          body: "We review your current documentation and practices against EcoVadis criteria to identify exactly where your score can be improved."
+        }, {
+          title: "Policy Development",
+          body: "We develop or strengthen the policies, procedures, and evidence base needed to demonstrate genuine sustainability performance."
+        }, {
+          title: "Assessment Support",
+          body: "We support questionnaire completion, evidence selection, and submission — ensuring clarity, accuracy, and strategic framing throughout."
+        }, {
+          title: "Score Review & Planning",
+          body: "Once results are received, we analyse your scorecard, identify further opportunities, and build your roadmap for the next assessment cycle."
+        }
+    ]} />
+  </section>
+  
+  <ContactBand 
+		message="Not sure where to start with EcoVadis?"
+    body="Talk to us — no obligation, just a straightforward conversation about where you are and what's possible."
+		buttonText="Speak to an Advisor"
+		buttonUrl="/contact" />
+</Layout>

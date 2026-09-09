@@ -1,0 +1,176 @@
+---
+import "@styles/Forms.css";
+---
+<section>
+  <div class="cntr --cntr-frm">
+    <form 
+      class="contact-form"
+      data-netlify="true"
+      name="enquiry" 
+      method="POST" 
+      netlify-honeypot="bot-field" 
+      id="enquiry-form"
+      >
+      <input type="hidden" name="form-name" value="enquiry" />
+      <p class="hp-field" aria-hidden="true">
+        <label for="bot-field">Leave this field blank</label>
+        <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off" />
+      </p>
+      <div class="form__fields" id="form-fields">
+      { (Astro.props.formTitle || Astro.props.formDescription) && 
+        <div class="form__intro">
+          { Astro.props.formTitle && 
+            <h2 class="as-h3">{Astro.props.formTitle}</h2>
+          }
+          { Astro.props.formDescription && 
+            <p set:html={Astro.props.formDescription} />
+          }
+        </div>
+      }
+
+      { (Astro.props.inputFirstName || Astro.props.inputLastName) && 
+        <div class="form__grid">
+          {Astro.props.inputFirstName && 
+            <div class="form__group">
+              <label 
+                for="f-first">{Astro.props.inputFirstName.label}</label>
+              <input 
+                type="text" 
+                name="first-name"
+                autocomplete="given-name"
+                placeholder={Astro.props.inputFirstName.placeholder} 
+                id="f-first"
+                required>
+            </div>
+          }
+          
+          {Astro.props.inputLastName && 
+            <div class="form__group">
+              <label 
+                for="f-last">{Astro.props.inputLastName.label}</label>
+              <input 
+                type="text" 
+                name="last-name"
+                autocomplete="family-name"
+                placeholder={Astro.props.inputLastName.placeholder} 
+                id="f-last"
+                required>
+            </div>
+          }
+        </div>
+      }
+
+      { Astro.props.companyName &&
+        <div class="form__group">
+          <label 
+            for="f-company">{Astro.props.companyName.label}</label>
+          <input 
+            type="text" 
+            name="company"
+            autocomplete="organization"
+            placeholder={Astro.props.companyName.placeholder} 
+            id="f-company" 
+            required="">
+        </div>
+      }
+
+      {Astro.props.emailAddress &&
+        <div class="form__group">
+          <label 
+            for="f-email">{Astro.props.emailAddress.label}</label>
+          <input 
+            type="email" 
+            name="email"
+            autocomplete="email" 
+            placeholder={Astro.props.emailAddress.placeholder} 
+            id="f-email"
+            required>
+        </div>
+      }
+
+      {Astro.props.services && 
+        <div class="form__group">
+          <label 
+            for="f-service">{Astro.props.services.label}</label>
+          <select 
+            name="service" 
+            id="f-service">
+            <option value="none">{Astro.props.services.default}</option>
+            {Astro.props.services.list.map((option:any) => (
+              <option value={option.value}>{option.name}</option>
+            ))}
+          </select>
+        </div>
+      }
+
+      {Astro.props.message && 
+        <div class="form__group">
+          <label 
+            for="f-message">{Astro.props.message.label}</label>
+          <textarea 
+            class="form-textarea" 
+            name="message" 
+            placeholder={Astro.props.message.placeholder}
+            id="f-message"/>
+        </div>
+      }
+
+      {Astro.props.submitButton && 
+        <button 
+          type="submit" 
+          class="btn --btn-cta">{Astro.props.submitButton.text}</button>
+      }
+      </div>
+      
+      {Astro.props.successMessage && 
+        <div 
+          class="success__msg" 
+          id="success-msg"
+          role="status"
+          aria-live="polite"
+          tabindex="-1"
+          set:html={Astro.props.successMessage.text} />
+      }
+
+      {Astro.props.errorMessage && 
+        <div 
+          class="error__msg" 
+          id="form-error"
+          role="alert"
+          aria-live="assertive"
+          set:html={Astro.props.errorMessage.text} />
+      }
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#enquiry-form')!;
+  const formFields = document.querySelector<HTMLElement>('#form-fields')!;
+  const successMsg = document.querySelector<HTMLElement>('#success-msg')!;
+  const errorMsg = document.querySelector<HTMLElement>('#form-error')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form) as any).toString()
+      });
+
+      if (response.ok) {
+        errorMsg.style.display = 'none';
+        form.reset();
+        formFields.style.display = 'none';
+        successMsg.style.display = 'block';
+        successMsg.focus();
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    } catch {
+      errorMsg.style.display = 'block';
+    }
+  });
+</script>

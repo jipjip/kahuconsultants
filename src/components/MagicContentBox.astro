@@ -1,0 +1,27 @@
+---
+/* MagicContentBox.astro */
+
+---
+<div class="mcbx">
+  { Astro.props.title &&
+    <h2 
+      class="js-obs"
+      set:html={Astro.props.title} />
+  }
+
+  { Astro.props.eyebrow && 
+    <div class="eyebrow">{Astro.props.eyebrow}</div>
+  }
+
+  { Astro.props.contentItems && Astro.props.contentItems.map((item: any) => (
+    'heading' in item 
+      ? <h3 set:html={item.heading} />
+      : <p set:html={item.paragraph} />
+  ))}
+
+  { Astro.props.cta &&
+    <a 
+      href={Astro.props.cta.url}
+      class={Astro.props.cta.ctaClass || ''}>{Astro.props.cta.text}</a>
+          }
+</div>

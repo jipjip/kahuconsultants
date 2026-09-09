@@ -1,0 +1,378 @@
+/* Inter font - https://rsms.me/inter/ 
+**
+** Serving the font-file from the site's own server to improve performance.
+** 
+** TODO? Swap to the variable Inter to get all weights in one file, better rendering?
+** fontsource or the Inter GitHub releases. 
+** check later.
+**
+*/
+@font-face {
+  font-family: 'inter';
+  src: url('/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+/* Base styles and variables */
+:root {
+  --c-brand: oklch(29.139% 0.06134 261.594);
+  --c-cta: oklch(52.563% 0.11998 251.504);
+  --c-white: oklch(99.655% 0.00181 249.268);
+  --c-black: oklch(26.257% 0.02943 259.098);
+  --c-sup1: oklch(87.759% 0.03857 251.99);
+  --c-sup2: oklch(96.509% 0.00976 253.021);
+  --c-sup3: oklch(65.744% 0.04266 249.68);
+
+  --c-bg: var(--c-white);
+  --c-bg-brand: var(--c-brand);
+  --c-bg-footer: var(--c-bg);
+  --c-bg-inlay: var(--c-sup1);
+  --c-text: var(--c-black);
+  --c-text-contrast: var(--c-white);
+  --c-footer-text: var(--c-text);
+  --c-subtext-contrast: var(--c-sup1);
+  --c-subtext-darker: oklch(from var(--c-sup3) calc( l * .8) c h);
+  --c-accent-lighter: oklch(from var(--c-cta) calc( l * 1.5) c h);
+  --c-accent: oklch(from var(--c-cta) calc( l * 1.4) c h);
+  --c-accent-darker: oklch(from var(--c-cta) calc( l * 1) c h);
+  --c-gridlines: oklch(from var(--c-bg) l c h / .1);
+  --c-accent30: oklch(from var(--c-accent) l c h / .3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+*:focus {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 2px;
+}
+
+html {
+  font-family: inter, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Base body styles */
+body {
+  position: relative;
+  background-color: var(--c-bg);
+  color: var(--c-text);
+
+  &.is-open {
+    overflow: hidden;
+  }
+}
+
+/* Headings with balanced text wrapping */
+h1, h2, h3 {
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--h1-fs, 3.5rem);
+  font-weight: var(--h1-fw, 100);
+  line-height: 1.05;
+  letter-spacing: .15rem;
+}
+
+.as-h2,
+h2 {
+  --em-fw: 300;
+
+  font-size: var(--h2-fs, 2.5rem);
+  font-weight: var(--h2-fw, 200);
+  line-height: 1.15;
+  letter-spacing: .15rem;
+}
+
+.as-h3,
+h3 {
+  font-size: var(--h3-fs, 1.25rem);
+  text-transform: var(--h3-tt, inherit);
+  font-weight: var(--h3-fw, 400);
+  line-height: 1.15;
+}
+
+/* Links and Buttons */
+a {
+  color: var(--ga-c, var(--c-cta));
+  text-decoration: var(--ga-td, none);
+  transition: 
+    color 0.3s, 
+    text-decoration 0.3s;
+  /* Set default hover behavior */
+  &:hover {
+    --ga-c: var(--gah-c, var(--c-text));
+    --ga-td: var(--gah-td, underline);
+  }
+}
+  .btn {
+    --ga-c: var(--btn-c, inherit);
+    --gah-c: var(--btnh-c, inherit);
+
+    display: inline-block;
+    background-color: var(--btn-bgc, transparent);
+    border: var(--btn-b, 1px solid var(--c-cta));
+    padding: 0.75rem 1.5rem;
+    font-size:.75rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    align-self: center;
+    justify-self: start;
+
+    &.--btn-cta {
+      --btn-b: none;
+      --btn-bgc: var(--c-cta);
+      --btn-c: var(--c-white);
+      --btnh-bgc: var(--c-accent);
+    }
+    
+    &.--btn-txt {
+      --btn-b: none;
+      --btn-bgc: transparent;
+      --btn-c: var(--c-accent);
+      --btnh-bgc: transparent;
+      --btnh-c: var(--c-white);
+      
+      display: inline-flex;
+      gap: .5rem;
+
+      &::after {
+        content: '→';
+      }
+    }
+
+    &:hover {
+      --btn-c: var(--btnh-c, var(--c-white));
+      --gah-td: none;
+      --btn-bgc: var(--btnh-bgc, var(--c-accent));
+    }
+  }
+
+em {
+  font-style: normal;
+  color: var(--em-c, var(--c-accent-darker));
+  font-weight: var(--em-fw, 200);
+}
+
+.mcbx {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  overflow: clip;
+
+  .btn {
+    width: var(--btn-w, stretch);
+    text-align: var(--btn-ta, center);
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Layout */
+section {
+  padding-block: var(--s-pb, 2rem);
+  padding-inline: var(--s-pi, 1rem);
+}
+  .--s-high {
+    --s-pb: var(--sh-pb, 4rem);
+  }
+
+  .--s-highlight {
+    background-color: var(--c-sup2);
+  }
+
+  .--s-contact {
+    --s-pb: 4rem;
+
+    background-color: var(--c-brand);
+    color: var(--c-text-contrast);
+    margin-top: 2rem;
+  }
+
+  .--s-quote {
+    --s-pb: 4rem 2rem;
+  }
+  
+  .--s-div-top {
+    padding-top: 2rem;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 1px;
+      width: 100%;
+      max-width: var(--cntr-mw);
+      margin-inline: auto;
+      border-top: 1px solid var(--c-accent30);
+      padding-top: 4rem;
+    }
+  }
+
+.cntr {
+  width: 100%;
+  max-width: var(--cntr-mw, 100%);
+  margin-inline: var(--cntr-mi, inherit);
+  overflow: clip;
+}
+
+  .--cntr-g {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--cntr-gtc, 1fr);
+    gap: var(--cntr-g, 1.5rem);
+    z-index: 1;
+  }
+
+  .--cntr-quote {
+    text-align: center;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--c-sup1);
+  }
+/* Generic elements */
+.as-eyebrow,
+.eyebrow {
+  order: -1;
+  text-transform: uppercase;
+  font-size: .625rem;
+  font-weight: 300;
+  letter-spacing: .075rem;
+  align-self:start;
+  padding: .25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--eye-c, var(--c-cta));
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--c-accent);
+  }
+}
+
+.strenghts {
+  align-content: center;
+}
+
+.usps {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: .1rem;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: var(--c-sup3);
+}
+.usp {
+  background-color: var(--c-sup2);
+  display: grid;
+  gap:1rem;
+  padding:1rem;
+}
+.usp__desc {
+  color: var(--c-subtext-darker);
+  font-size: .75rem;
+}
+
+.contact-cta {
+  align-content: center;
+  justify-self: end;
+}
+
+
+
+/* Helpers */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: clip
+}
+
+.js-obs {
+  translate: 2rem 0;
+  opacity: 0;
+  transition: 
+    opacity 1s cubic-bezier(.45, -.01, .18, .99) var(--iv-del, .01s), 
+    translate .8s cubic-bezier(.45, -.01, .18, .99) var(--iv-del, .01s);
+}
+
+.inview {
+  translate: 0 0;
+  opacity: 1;
+}
+
+.post,
+.article {
+  --h2-fs: 2rem;
+  --h2-fw: 300;
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.legal {
+  background-color: var(--c-sup2);
+}
+
+.tags {
+  display: flex;
+  gap: .5rem;
+}
+
+.tag {
+  --ga-c: var(--c-text);
+  --gah-td: none;
+
+  font-size: .75rem;
+  background-color: var(--c-accent30);
+  padding: .25rem .5rem;
+  border-radius: .25rem;
+}
+
+@media(width >= 768px) {
+  :root {
+    --s-pi: 2rem;
+    --sh-pb: 6rem;
+    --h1-fs: 4rem;
+    --cntr-mw: 1140px;
+    --btn-w: fit-content;
+    --btn-ta: inherit;
+  }
+
+  main {
+    padding-top: 5rem;
+  }
+  .cntr {
+    --cntr-gtc: repeat(2, 1fr);
+    --cntr-mi: auto;
+  }
+    .--cntr-11 {
+      --cntr-gtc: 1fr;
+    }
+    .--cntr-13 {
+      --cntr-gtc: 2fr 1fr;
+    }
+    .--cntr-cards {
+      --cntr-gtc: 1fr 1fr 1fr;
+    }
+  .article {
+    --cntr-mw: 800px;
+  }
+}

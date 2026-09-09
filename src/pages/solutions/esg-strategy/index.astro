@@ -1,0 +1,82 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import MagicContentBox from '@components/MagicContentBox.astro';
+import Cards from '@components/Cards.astro';
+import FeatureList from '@components/FeatureList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+
+---
+
+<Layout
+  pageName="ESG Strategy rooted in your business."
+  pageDescription="Developing pragmatic, integrated sustainability strategies that align with your business objectives and create lasting value.">
+	<Hero 
+    title = "ESG Strategy <em>rooted in</em> your business."
+    description = "Developing pragmatic, integrated sustainability strategies that align with your business objectives and create lasting value."
+    heroType = "service abstr1"
+  />
+
+  <section>
+    <div class="cntr --cntr-g --cntr-13">
+      <MagicContentBox
+        title="Strategy that's built for your organisation"
+        contentItems = {[
+          {
+            paragraph: "A robust ESG strategy is no longer optional — it is a fundamental component of long-term business resilience. But the most effective strategies are not those built from generic templates; they are the ones that are firmly grounded in the realities of your business model, your stakeholder relationships, and your competitive context."
+          },{
+            paragraph: "Kahu Consultants takes a collaborative approach to ESG strategy development. We begin by deeply understanding your business — your operations, your value chain, your key relationships, and your existing sustainability initiatives. We then work with you to define a strategy that is both ambitious and achievable, with clear priorities, measurable goals, and a credible pathway for delivery."
+          },{
+            paragraph: "Whether you are developing your first sustainability strategy or refreshing an existing one in light of new regulatory requirements or stakeholder expectations, we bring the expertise and the partnership mindset to help you succeed."
+          }
+        ]} />
+
+      <FeatureList 
+        title="Strategy Services"
+        features={[
+          { 
+            feature: "Sustainability maturity assessments"
+          },{ 
+            feature: "Materiality analysis and stakeholder mapping"
+          },{ 
+            feature: "ESG strategy framework development"
+          },{ 
+            feature: "Goal-setting and KPI design"
+          },{ 
+            feature: "Governance structure advisory"
+          },{ 
+            feature: "Regulatory horizon scanning"
+          },{ 
+            feature: "Board and leadership engagement"
+          }
+      ]}/>
+    </div>  
+  </section>
+
+  <section>
+    <Cards 
+      type="process__cards"
+      title="Building Your ESG Strategy with Kahu"
+      cards={[
+        {
+          title: "Discovery",
+          body: "We conduct a thorough review of your business context, current ESG activities, stakeholder landscape, and the regulatory environment you face."
+        }, {
+          title: "Prioritisation",
+          body: "Through materiality analysis and stakeholder engagement, we identify the ESG themes and issues most critical to your long-term value creation."
+        }, {
+          title: "Strategy Design",
+          body: "We co-create your ESG strategy with your team — setting ambitions, defining pillars, and establishing the goals and targets that will guide your programme."
+        }, {
+          title: "Embedding & Delivery",
+          body: "We support the integration of your strategy into business planning, governance structures, and team responsibilities to ensure real-world delivery."
+        }
+    ]} />
+  </section>
+
+  <ContactBand 
+		message="Let's build a <em>sustainability strategy</em> that works."
+		buttonText="Speak to an Advisor"
+		buttonUrl="/contact" />
+  
+</Layout>

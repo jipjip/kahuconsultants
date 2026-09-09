@@ -1,0 +1,12 @@
+<svg viewBox="148 42 440 120" xmlns="http://www.w3.org/2000/svg" style="height:40px;width:auto;">
+  <g transform="translate(148, 42)">
+    <path d="M0,80 C10,40 50,10 100,0 C80,30 60,55 55,80 Z" fill="#C5D9F0" opacity="0.2"></path>
+    <path d="M0,80 C12,45 45,18 90,8 C72,36 54,58 52,80 Z" fill="#C5D9F0" opacity="0.45"></path>
+    <path d="M0,80 C15,50 40,26 78,18 C62,42 47,62 46,80 Z" fill="#C5D9F0"></path>
+    <path d="M0,80 C8,62 22,50 40,44 C34,56 26,67 25,80 Z" fill="#4A8FD4"></path>
+  </g>
+  <line x1="270" y1="52" x2="270" y2="148" stroke="#4A8FD4" stroke-width="0.8" opacity="0.5"></line>
+  <text x="288" y="112" font-size="52" font-weight="300" fill="#C5D9F0" font-family="Inter, sans-serif" text-anchor="start">KAHU</text>
+  <text x="291" y="138" font-size="14.5" font-weight="500" fill="#4A8FD4" font-family="Inter, sans-serif" text-anchor="start">CONSULTANTS</text>
+  <text x="292" y="158" font-size="10" font-weight="300" fill="#C5D9F0" opacity="0.4" font-family="Inter, sans-serif" text-anchor="start">SUSTAINABILITY · ESG · ADVISORY</text>
+</svg>

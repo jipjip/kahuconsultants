@@ -1,0 +1,117 @@
+.--s-hero {
+  --s-pb: 2rem;
+  --em-c: var(--c-accent-lighter);
+  --eye-c: var(--c-accent-lighter);
+
+  background-color: var(--hero-bgc, var(--c-bg-brand));
+  color: var(--hero-c, var(--c-text-contrast));
+
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  clip-path: inset(0); 
+
+  &.service {
+    --s-pb: 6rem;
+    --h1-fs: 3.5rem;
+  }
+
+  &.light {
+    --hero-bgc: var(--c-sup2);
+    --hero-c: var(--c-text);
+    --h1-fs: 3.5rem;
+    --hd-c: var(--c-text);
+    --em-c: var(--c-cta);
+    --eye-c: var(--c-cta);
+    
+    &::before {
+      content: initial;
+    }
+  }
+
+  &.abstr1 {
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;  
+      background-color: var(--c-bg-brand);
+      background-image:
+        radial-gradient(circle at 20% 20%, var(--c-accent30) 0%, var(--c-accent30) 30%, transparent 70%),
+        linear-gradient(var(--c-gridlines) .5px, transparent .5px),
+        linear-gradient(90deg, var(--c-gridlines) .5px, transparent .5px);
+      background-size: 100% 100%, 30px 30px, 30px, 30px;
+      transform: var(--abstr1-trf, transform: perspective(600px) rotateX(35deg) rotateY(5deg));
+      transform-origin: var(--abstr1-trfo, 50% -10%);
+    }
+  }
+
+  /* Ensure content is above the background pattern */
+  .cntr {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.hero__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hero__desc {
+  --iv-del: .25s;
+
+  color: var(--hd-c, var(--c-subtext-contrast));
+  line-height: 1.8;
+  font-weight: 200;
+}
+
+.hero__cards { 
+  --cntr-g: 1rem;
+  --cntr-gtc: 1fr 1fr;
+
+  align-content: center;
+  margin-block: auto;
+}
+
+.hero__card {
+  background-color: oklch(from var(--c-accent) l c h /.2);
+  padding: 1.5rem 1rem;
+  
+  a {
+    --gah-td: none;
+
+    color: var(--c-accent-lighter);
+  }
+
+  &:hover {
+    background-color: oklch(from var(--c-accent) l c h /.5);
+  }
+}
+
+.card__label {
+  font-variant: small-caps;
+  color: var(--c-sup1);
+}
+.hero__cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: var(--hcta_jc, space-between);
+}
+
+@media(width>=768px) {
+  .--s-hero {
+    --s-pb: 6rem;
+    --abstr1-trf:perspective(600px) rotateX(56deg) rotateY(10deg);
+    --abstr1-trfo: 60% -20%;
+    --hcta_jc: start;
+  }
+
+  .article {
+    .--s-hero {
+      --cntr-mw: 1140px;
+    }
+  }
+}

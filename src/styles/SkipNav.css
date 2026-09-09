@@ -1,0 +1,15 @@
+.skipnav {
+  color: var(--c-text);
+  height: 5rem;
+  margin-top: -5rem;
+
+  &:has(:focus) {
+    margin-top: 0;
+  }
+
+  .nav__list {
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+  }
+}

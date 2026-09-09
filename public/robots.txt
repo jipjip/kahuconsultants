@@ -1,0 +1,4 @@
+user-agent: *
+allow: /
+
+sitemap: https://www.kahuconsultants.com/sitemap-index.xml

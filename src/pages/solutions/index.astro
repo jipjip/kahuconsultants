@@ -1,0 +1,120 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import SolutionsList from '@components/SolutionsList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+
+---
+
+<Layout
+	pageName="Our solutions"
+	pageDescription="Four ways to strengthen your ESG position">
+	<Hero 
+	title = "Four ways to strengthen your <em>ESG</em> position"
+	description = "From ratings like EcoVadis and CDP to full strategy and reporting — expert support, every step of the way."
+	eyebrow = "Our Solutions"
+	heroType = "abstr1"
+/>
+
+<SolutionsList
+	solutions = {[
+		{
+			title: "Improve your EcoVadis score",
+			eyebrow: "EcoVadis",
+			content: "<p>EcoVadis shapes procurement decisions across global supply chains. We know the methodology from the inside — how criteria are weighted, what evidence counts, and where the highest-impact opportunities lie. We turn your scorecard into a clear action plan.</p>",
+			inlayContent: "<h3>EcoVadis Advisory</h3>",
+			usps: [
+				{
+					text: "Scorecard gap analysis mapped to activated criteria and scoring weight"
+				},{
+					text: "Document audit and policy strengthening to close evidence gaps"
+				},{
+					text: "Prioritised improvement plan by effort vs. score impact"
+				},{
+					text: "Submission preparation and document quality review"
+				},{
+					text: "Scorecard review and formal appeal support where results are disputed"
+				}
+			],
+			cta: {
+				url: "/solutions/ecovadis-advisory",
+				text: "Learn more about EcoVadis",
+				aria: "Learn more about EcoVadis"
+			}
+		},{
+			title: "Navigate CDP with confidence",
+			eyebrow: "CDP",
+			content: "<p>CDP disclosure is increasingly required by investors, customers, and regulators — but the questionnaire is detailed, technical, and unforgiving. We guide you through the process from first submission to score improvement, with practical support at every stage.</p>",
+			inlayContent: "<h3>CDP Disclosure</h3>",
+			usps: [
+				{
+					text: "CDP questionnaire scoping — Climate, Water, Forests, or Supply Chain"
+				},{
+					text: "Response drafting and scoring guidance aligned to CDP evaluation criteria"
+				},{
+					text: "GHG data preparation and Scope 1, 2 & 3 quantification"
+				},{
+					text: "TCFD alignment and climate risk disclosure support"
+				},{
+					text: "Year-on-year score improvement planning"
+				}
+			],
+			cta: {
+				url: "/solutions/cdp-disclosure",
+				text: "Learn more about CDP",
+				aria: "Learn more about CDP"
+			}
+		},{
+			title: "Build credible ESG reports",
+			eyebrow: "ESG Reporting",
+			content: "<p>Sustainability reporting is evolving fast — from voluntary best-practice to mandatory disclosure under CSRD and ISSB. We help you build reports that satisfy regulatory requirements, satisfy investor expectations, and actually communicate your story.</p>",
+			inlayContent: "<h3>ESG Reporting</h3>",
+			usps: [
+				{
+					text: "Materiality assessment (single or double materiality) to anchor your report"
+				},{
+					text: "GHG inventory and Scope 1, 2 & 3 emissions quantification"
+				},{
+					text: "Report structure and narrative aligned to GRI, ISSB or CSRD"
+				},{
+					text: "Data collection templates and internal process documentation"
+				},{
+					text: "Year-on-year improvement and baseline-setting support"
+				}
+			],
+			cta: {
+				url: "/solutions/esg-reporting",
+				text: "Learn more about ESG Reporting",
+				aria: "Learn more about ESG Reporting"
+			}
+		},{
+			title: "Define your ESG strategy",
+			eyebrow: "Strategy Development",
+			content: "<p>A sustainability strategy that sits in a drawer is not a strategy. We work with leadership teams to build roadmaps that are honest about where you are, ambitious about where you're going, and specific about how you'll get there.</p>",
+			inlayContent: "<h3>ESG Strategy</h3>",
+			usps: [
+				{
+					text: "Stakeholder and materiality workshops to set the right priorities"
+				},{
+					text: "Target-setting aligned to science-based and best-practice benchmarks"
+				},{
+					text: "Multi-year sustainability roadmap with owners and milestones"
+				},{
+					text: "Policy development — environmental, social, governance, and supply chain"
+				},{
+					text: "Executive and board-level communication support"
+				}
+			],
+			cta: {
+				url: "/solutions/esg-strategy",
+				text: "Learn more about ESG Strategy",
+				aria: "Learn more about ESG Strategy"
+			}
+		}
+	]}/>
+
+<ContactBand 
+	message="Not sure which solution fits your situation?"
+	buttonText="Start a conversation"
+	buttonUrl="/contact" />
+</Layout>

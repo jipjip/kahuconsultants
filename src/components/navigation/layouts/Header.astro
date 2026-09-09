@@ -1,0 +1,64 @@
+---
+/* Header.astro */
+/* Contains the logo, main navigation and primary call to action. */
+import '@styles/Header.css';
+import SkipNav from '@components/navigation/SkipNav.astro';
+
+
+---
+
+<header class="header">
+  <SkipNav slot="skipnav"/>
+  <div class="navbar">
+    <a href="/" class="logo" aria-label="Kahu Consultants logo">
+      <svg viewBox="148 42 440 120" xmlns="http://www.w3.org/2000/svg" style="height:60px;width:auto;">
+        <g transform="translate(148, 42)">
+          <path d="M0,80 C10,40 50,10 100,0 C80,30 60,55 55,80 Z" fill="#C5D9F0" opacity="0.2"></path>
+          <path d="M0,80 C12,45 45,18 90,8 C72,36 54,58 52,80 Z" fill="#C5D9F0" opacity="0.45"></path>
+          <path d="M0,80 C15,50 40,26 78,18 C62,42 47,62 46,80 Z" fill="#C5D9F0"></path>
+          <path d="M0,80 C8,62 22,50 40,44 C34,56 26,67 25,80 Z" fill="#4A8FD4"></path>
+        </g>
+        <line x1="270" y1="52" x2="270" y2="148" stroke="#4A8FD4" stroke-width="0.8" opacity="0.5"></line>
+        <text x="288" y="112" font-size="52" font-weight="300"  class="logo-text" font-family="Inter, sans-serif" text-anchor="start">KAHU</text>
+        <text x="291" y="138" font-size="14.5" font-weight="500" fill="#4A8FD4" font-family="Inter, sans-serif" text-anchor="start">CONSULTANTS</text>
+        <text x="292" y="158" font-size="10" font-weight="300" class="logo-text" opacity="0.4" font-family="Inter, sans-serif" text-anchor="start">SUSTAINABILITY · ESG · ADVISORY</text>
+      </svg>
+    </a>
+    <button 
+        type="button"
+        class="mobile-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Open navigation menu">
+        <span class="closed" aria-hidden="true">≡</span>
+        <span class="opened" aria-hidden="true">+</span>
+    </button>
+    <nav 
+      id="main-nav"
+      class="main-nav" 
+      aria-label="Main navigation">
+      <ul class="nav__list" >
+        <li><a href="/solutions" class="nav__link">Solutions</a></li>
+        <li><a href="/resources" class="nav__link">Resources</a></li>
+        <li><a href="/about" class="nav__link">About</a></li>
+      </ul>
+      <a 
+        href="/contact" 
+        class="btn --btn-cta nav-cta">Get in touch</a>
+    </nav>
+    
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector('.mobile-toggle');
+  const navList = document.querySelector('.main-nav .nav__list');
+  const body = document.body;
+
+  btn?.addEventListener('click', () => {
+    const isOpen = body?.classList.toggle('is-open');
+    btn?.classList.toggle('active', isOpen);
+    btn?.setAttribute('aria-expanded', String(isOpen));
+    btn?.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+  });
+</script>

@@ -1,0 +1,26 @@
+---
+import ArticleCard from "./ArticleCard.astro";
+import { getFilteredArticles } from "../lib/getArticles";
+
+const articles = await getFilteredArticles();
+---
+
+<section>
+  { articles.length === 0 ? (
+    <div class="cntr">
+      <p>Sorry, no resources yet.</p>
+    </div>
+  ) : (
+    <div class="cntr --cntr-g --cntr-cards">
+      { articles.map((article:any) => (
+        <ArticleCard 
+          title={article.data.title}
+          body={article.data.description} 
+          url={`/resources/${article.id}`}
+          thumbNail={article.data.thumbNail}
+          thumbNailText={article.data.thumbNailText}
+          date={article.data.datePublished}/>
+      ))}
+    </div>
+  )}
+</section>

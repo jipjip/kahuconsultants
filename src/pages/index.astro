@@ -1,0 +1,135 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import MagicContentBox from '@components/MagicContentBox.astro';
+import Quote from '@components/Quote.astro';
+import Cards from '@components/Cards.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+import HighLight from '@components/HighLight.astro';
+import highlightImage from "@assets/images/V1_Medals-Badges-2025_29-11-2024_stack_ldfvya.avif"
+---
+
+<Layout
+	pageName="Purpose-led sustainability advisory."
+  pageDescription="Kahu Consultants is a boutique advisory firm helping organisations navigate the world of ESG with clarity and confidence.">
+	<Hero 
+		title = "Purpose-led<br><em>sustainability</em><br>advisory."
+		eyebrow = "ESG Sustainability Advisory"
+		description = "Kahu Consultants is a boutique advisory firm helping organisations navigate the world of ESG with clarity and confidence."
+		btn1 = {{
+			text: "Start a Conversation",
+			url: "/contact"
+		}}
+		btn2 = {{
+			text: "Our Approach",
+			url: "/about"
+		}}
+		cards = {[
+			{
+				tag: "service",
+				text: "EcoVadis Advisory",
+				url: "/solutions/ecovadis-advisory"
+			},{
+				tag: "service",
+				text: "CDP Disclosure",
+				url: "/solutions/cdp-disclosure"
+			},{
+				tag: "service",
+				text: "ESG Reporting",
+				url: "/solutions/esg-reporting"
+			},{
+				tag: "service",
+				text: "ESG Strategy",
+				url: "/solutions/esg-strategy"
+			}
+		]}
+		heroType = "abstr1"
+	/>
+
+	<section class="--s-highlight">
+		<div class="cntr --cntr-g">
+			<MagicContentBox
+        title="A boutique firm built around <em>your</em> objectives."
+        eyebrow="Who We Are"
+				contentItems={[
+					{
+						paragraph: "We work closely with each client to understand their unique requirements, industry context, and sustainability goals. Our approach is always tailored — never templated."
+					}
+				]}
+				cta={{
+					url: "/contact",
+					text: "About Kahu",
+					ctaClass: "btn --btn-cta" 
+				}}
+      />
+
+			<div class="strenghts">
+				<div class="usps">
+					<div class="usp">
+						<div class="as-h2">12+</div>
+						<div class="usp__desc">YEARS EXPERIENCE</div>
+					</div>
+					<div class="usp">
+						<div class="as-h2">50+</div>
+						<div class="usp__desc">CLIENTS SERVED</div>
+					</div>
+					<div class="usp">
+						<div class="as-h2">100%</div>
+						<div class="usp__desc">CLIENT-FOCUSED</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<Quote 
+		quote = "We don't believe in one-size-fits-all.<br/>Every engagement begins with listening." />
+	
+	<HighLight 
+		title="Structured, expert-led <em>EcoVadis</em> advisory"
+		eyebrow="EcoVadis Advisory"
+		contentItems = {[
+          {
+            paragraph: "We help you understand precisely what EcoVadis is measuring, where your gaps lie, and how to address them in a way that is both credible and sustainable."
+          },{
+            paragraph: "Our advisors have direct experience of EcoVadis methodology from the inside, which means we understand exactly what assessors are looking for."
+          }]}
+		highlightImage={highlightImage}
+		cta={{
+			url: "/contact",
+			ctaClass: "btn --btn-cta",
+			text: "Speak to an advisor"
+		}}/>
+
+	<!-- Values -->
+	<section>
+		<div class="cntr --cntr-g --cntr-11">
+			<MagicContentBox
+        title="What sets us apart"
+        eyebrow="Our Values"
+      />
+		
+			<Cards 
+				type="usp__cards"
+				cards={[
+					{
+						title: "Partnerships, not projects",
+						body: "We measure success by the lasting difference we make. We invest in relationships that go beyond a single engagement."
+					},{
+						title: "Transparency",
+						body: "We say the difficult things clearly. Honest advice, even when uncomfortable, is the most valuable thing we can offer."
+					}, {
+						title: "Trusted for the long run",
+						body: "Many of our clients have worked with us for years. We earn that trust by consistently putting their interests first."
+					}
+			]}/>
+		</div>
+	</section>
+
+	
+	<!-- Contact CTA -->
+	<ContactBand 
+		message="Ready to navigate <em>sustainability</em> with confidence?"
+		buttonText="Start a conversation"
+		buttonUrl="/contact" />
+</Layout>

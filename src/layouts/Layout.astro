@@ -1,0 +1,97 @@
+---
+import '@styles/base.css';
+
+import { SEO } from "astro-seo";
+
+import Header from '@components/navigation/layouts/Header.astro';
+import Footer from '@components/navigation/layouts/Footer.astro';
+
+interface Props {
+  pageName?: string;
+  pageDescription?: string;
+  type?: string;
+  ogType?: string;
+  publishedTime?: string;
+}
+
+const { pageName, pageDescription, type, ogType, publishedTime } = Astro.props;
+
+const siteTitle = "Kahu Consultants";
+const defaultDescription = "Kahu Consultants is a boutique advisory firm helping organisations navigate the world of ESG with clarity and confidence.";
+const resolvedDescription = pageDescription || defaultDescription;
+const resolvedOgType = ogType || "website";
+const ogImage = new URL("/og-image.png", Astro.site);
+---
+<!doctype html>
+<html lang="en">
+	<head>
+    <SEO
+      title={pageName}
+      titleTemplate={`%s | ${siteTitle}`}
+      titleDefault={siteTitle}
+      description={resolvedDescription}
+      charset="UTF-8"
+      openGraph={{
+        basic: {
+          title: pageName || siteTitle,
+          type: resolvedOgType,
+          image: ogImage.href
+        },
+        image: {
+          alt: `${siteTitle}, sustainability and ESG advisory`
+        },
+        optional: {
+          siteName: siteTitle,
+          description: resolvedDescription
+        },
+        article: resolvedOgType === "article" ? { publishedTime } : undefined
+      }}
+      twitter={{
+        card: "summary_large_image",
+        title: pageName || siteTitle,
+        description: resolvedDescription,
+        image: ogImage.href
+      }}
+    />
+    <link rel="preload" href="/InterVariable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<slot name="head" />
+	</head>
+	<body>
+		<slot name="skipnav" />
+    <Header>
+  		<slot name="header" />
+    </Header>
+		<main 
+			id="main"
+			class:list={[type]}>
+			<a name="main-content" tabindex="-1"></a>
+			<slot />
+		</main>
+    <Footer>
+      <slot name="footer" />
+    </Footer>
+	</body>
+</html>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('inview');
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.js-obs').forEach((el) => {
+    const rect = el.getBoundingClientRect();
+    
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      el.classList.add('inview');
+    } else {
+      observer.observe(el);
+    }
+  });
+</script>

@@ -1,0 +1,20 @@
+---
+/* ContactInfo */
+import "@styles/ContactInfo.css";
+---
+{Astro.props.contactInfo && 
+  <section>
+    <div class="cntr">
+      <ul>
+        {Astro.props.contactInfo.map((item:any) => (
+          <li class="info__row">
+            <div class="info__label">{item.label}</div>
+            <div 
+              class="info__text"
+              set:html={item.text}/>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+}

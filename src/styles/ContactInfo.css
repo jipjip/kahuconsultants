@@ -1,0 +1,20 @@
+.info__row {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 1rem;
+  align-items: baseline;
+  padding-block: 1rem;
+  & + .info__row {
+    border-top: 1px solid var(--c-accent30);
+  }
+}
+
+.info__label {
+  text-transform: uppercase;
+  color: var(--c-cta);
+  font-size: .75rem;
+}
+
+.info__text {
+  width: 100%;
+}

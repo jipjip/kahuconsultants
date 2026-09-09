@@ -1,0 +1,31 @@
+footer {
+  --eye-c: var(--c-text);
+  
+  background-color: var(--c-bg-footer);
+  color: var(--c-footer-text);
+  padding-inline: 2rem;
+  padding-block: 4rem;
+  border-top: 1px solid var(--c-accent30);
+
+  .nav__list {
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+  }
+}
+
+.f__copy {
+  justify-self: end;
+  padding-block: 2rem 0;
+}
+
+@media(width>=768px) {
+  .--cntr-footer {
+    --cntr-gtc: 1fr 1fr 2fr;
+  
+      nav:last-child {
+        text-align: right;
+      }
+  }
+  
+}

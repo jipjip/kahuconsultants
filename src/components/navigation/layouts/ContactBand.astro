@@ -1,0 +1,17 @@
+<section class="--s-contact">
+  <div class="cntr --cntr-g --cntr-13">
+    <div class="mcbx">
+      <h2 
+        class="js-obs"
+        set:html={Astro.props.message} />
+      { Astro.props.body && 
+        <p set:html={Astro.props.body} />
+      }
+    </div>
+    <div class="contact-cta">
+      <a 
+        href={Astro.props.buttonUrl}
+        class="btn --btn-cta">{Astro.props.buttonText}</a>
+    </div>
+  </div>
+</section>

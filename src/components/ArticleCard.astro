@@ -1,0 +1,38 @@
+---
+/* ArticleCard.astro */
+import "@styles/ArticleCard.css";
+import Image
+ from "astro/components/Image.astro";
+const { title, body, url, thumbNail, thumbNailText, date } = Astro.props;
+
+---
+
+<a 
+  href={url}
+  class="card card__article">
+  <div class="card__bg">
+    {
+      thumbNail && 
+        <Image
+          src={thumbNail}
+          alt={thumbNailText}
+          width={400}
+          sizes="800px"
+        />}
+  </div>
+  <div class="card__fg">
+    { title && 
+      <h3 
+        class="as-h2"
+        set:html={title}/>
+    }
+    { body && 
+      <div 
+        class="card__body" 
+        set:html={body}/>
+    }
+    { date && 
+      <div class="card__date">{date.toLocaleDateString()}</div>
+    }
+  </div>
+</a>

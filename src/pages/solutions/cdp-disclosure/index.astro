@@ -1,0 +1,80 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import Cards from '@components/Cards.astro';
+import FeatureList from '@components/FeatureList.astro';
+import ContactBand from '@components/navigation/layouts/ContactBand.astro';
+import MagicContentBox from '@components/MagicContentBox.astro';
+
+---
+
+<Layout
+  pageName="CDP is complex. Your disclosure doesn't have to be."
+  pageDescription="We guide you through Climate, Water, and Forests disclosures — cutting through the complexity so you can focus on what your data actually shows.">
+	<Hero 
+    title = "CDP is complex. <em>Your disclosure doesn't have to be.</em>"
+    description = "We guide you through Climate, Water, and Forests disclosures — cutting through the complexity so you can focus on what your data actually shows."
+    heroType = "service abstr1"
+  />
+
+  <section>
+    <div class="cntr --cntr-g --cntr-13">
+      <MagicContentBox
+        title="Navigating the complexity of CDP"
+        contentItems = {[
+          {
+            paragraph: "The CDP questionnaire is one of the most comprehensive environmental disclosure frameworks. Completing it to a high standard requires not only an understanding of the questions themselves, but a deep familiarity with CDP's scoring methodology, the data quality expectations of assessors, and the strategic positioning that distinguishes a “B” response from an “A”."
+          },{
+            paragraph: "Kahu Consultants supports organisations through the full CDP disclosure process — from initial planning and data collection through to final submission and score improvement planning. We work with businesses disclosing for the first time and with experienced reporters looking to push their score to the next level."
+          },{
+            paragraph: "Our approach combines technical rigour with practical operational support, ensuring that your disclosure is both accurate and strategically presented."
+          }
+        ]} />
+
+      <FeatureList 
+        title="CDP Programmes"
+        features={[
+          { 
+            feature: "CDP Climate Change disclosure"
+          },{ 
+            feature: "CDP Water Security questionnaire"
+          },{ 
+            feature: "CDP Forests questionnaire"
+          },{ 
+            feature: "First-time disclosure support"
+          },{ 
+            feature: "Score improvement (C→B→A)"
+          },{ 
+            feature: "CDP Gap Analysis"
+          }
+      ]}/>
+    </div>
+  </section>  
+
+  <section>
+    <Cards 
+      type="process__cards"
+      title="Our CDP Support Process"
+      cards={[
+        {
+          title: "Scope & Planning",
+          body: "We review your previous disclosures, current data maturity, and which CDP programmes apply — so we know exactly where to focus."
+        }, {
+          title: "Data Collection",
+          body: "We work with your operations, finance, and sustainability teams to gather the emissions data, targets, and governance evidence required."
+        }, {
+          title: "Response Drafting",
+          body: "We draft or review your questionnaire responses, ensuring accuracy, completeness, and alignment with CDP scoring methodology."
+        }, {
+          title: "Review & Submit",
+          body: "A final quality review before submission, plus a debrief on expected scoring outcomes and next-year improvement priorities."
+        }
+    ]} />
+  </section>
+  
+  <ContactBand 
+		message="Achieve a <em>stronger CDP disclosure</em> this cycle."
+		buttonText="Speak to an Advisor"
+		buttonUrl="/contact" />
+
+</Layout>

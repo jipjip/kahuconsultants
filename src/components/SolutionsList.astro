@@ -1,0 +1,47 @@
+---
+/* SolutionsList */
+import "@styles/SolutionsList.css";
+---
+
+{Astro.props.solutions.map((solution:any,  index: number) => (
+  <section class={index % 2 != 0 ? "--s-highlight --s-high" : "--s-high"}>
+    <div class={index % 2 != 0 ? "--cntr-rev cntr --cntr-g solution" : "cntr --cntr-g solution"}>
+      <div class="mcbx">
+        {solution.title && 
+          <h2 
+            class="mcbx__title js-obs"
+            set:html={solution.title} />
+        }
+        { solution.eyebrow && 
+          <div class="eyebrow">{solution.eyebrow}</div> 
+        }
+        {solution.content && 
+        <div 
+          class="mcbx__body" 
+          set:html={solution.content} />
+        }
+        {solution.usps && 
+          <ul class="mcbx__list">
+            {solution.usps.map((usp:any) => (
+              <li>
+                <div class="check">✓</div>
+                <div set:html={usp.text} />
+              </li>
+
+            ))}
+          </ul>
+        }
+        {solution.cta && 
+          <a 
+            href={solution.cta.url} 
+            class="btn"
+            aria-label={solution.cta.aria}>{solution.cta.text}</a>
+        }
+      </div>
+
+      {solution.inlayContent &&
+        <div class="inlay" set:html={solution.inlayContent} />
+      }
+    </div>
+  </section>
+))}

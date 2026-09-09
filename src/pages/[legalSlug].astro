@@ -1,0 +1,35 @@
+---
+import "@styles/BlogArticle.css";
+
+import { getCollection, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("legal");
+  return pages.map((entry: any) => ({
+    params: { legalSlug: entry.id },
+    props: { entry },
+  }));
+}
+
+const meta = Astro.props.entry.data,
+      { Content } = await render(Astro.props.entry);
+---
+
+<Layout
+  pageName={meta.seoTitle}
+  pageDescription={meta.seoDescription}
+  type="article legal">
+  <section>
+    <article>
+      <div class="cntr">
+        { meta.title && <h1>{meta.title}</h1> }
+        {
+          meta.updatedDate &&
+            <p class="legal__updated">Last updated: {meta.updatedDate.toLocaleDateString()}</p>
+        }
+        <Content />
+      </div>
+    </article>
+  </section>
+</Layout>

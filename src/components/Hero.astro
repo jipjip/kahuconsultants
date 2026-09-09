@@ -1,0 +1,57 @@
+---
+/* Hero.astro */
+import '@styles/Hero.css';
+
+const title = Astro.props.title,
+      eyebrow = Astro.props.eyebrow,
+      description = Astro.props.description,
+      btn1 = Astro.props.btn1,
+      btn2 = Astro.props.btn2,
+      cards = Astro.props.cards,
+      heroType = Astro.props.heroType || '',
+      hasButtons = btn1 || btn2 ? true : false;
+---
+
+<section class={`${heroType} --s-hero`}>
+  <div class="cntr --cntr-g">
+    <div class="hero__copy">
+      <h1 
+        class="hero__title js-obs"
+        set:html={title}/>
+      { eyebrow && 
+        <div class="eyebrow">{eyebrow}</div>
+      }
+      <p 
+        class="hero__desc js-obs"
+        set:html={description}></p>
+      { hasButtons &&
+        <div class="hero__cta">
+          { btn1 &&
+            <a 
+              href={btn1.url || '/'}
+              class="btn --btn-cta">{btn1.text || "button"}</a>
+          }
+          { btn2 &&
+            <a 
+              href={btn2.url || '/'}
+              class="btn --btn-txt">{btn2.text || "button"}</a>
+          }
+        </div>
+      }
+    </div>
+    { cards && 
+      <ul class="cntr --cntr-g hero__cards">
+        { cards.map((card:any) => (
+          <li class="hero__card">
+            <a 
+              href={card.url}
+              >
+              <div class="card__label">{card.tag}</div>
+              <div>{card.text}</div>
+            </a>
+          </li>
+        ))}
+      </ul>
+    }
+  </div>
+</section>
