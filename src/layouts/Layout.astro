@@ -9,12 +9,13 @@ import Footer from '@components/navigation/layouts/Footer.astro';
 interface Props {
   pageName?: string;
   pageDescription?: string;
+  gscTag?: boolean;
   type?: string;
   ogType?: string;
   publishedTime?: string;
 }
 
-const { pageName, pageDescription, type, ogType, publishedTime } = Astro.props;
+const { pageName, pageDescription, gscTag, type, ogType, publishedTime } = Astro.props;
 
 const siteTitle = "Kahu Consultants";
 const defaultDescription = "Kahu Consultants is a boutique advisory firm helping organisations navigate the world of ESG with clarity and confidence.";
@@ -54,6 +55,9 @@ const ogImage = new URL("/og-image.png", Astro.site);
       }}
     />
     <link rel="preload" href="/InterVariable.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    { gscTag && 
+      <script async src={`<meta name="google-site-verification" content="4ov3XyxjoO5nmqDZ1R-3m1cWR7f3nLrbiK6rwGa2NfQ" />`}></script>
+    }
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<slot name="head" />
