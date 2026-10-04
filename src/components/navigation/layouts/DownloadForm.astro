@@ -1,0 +1,113 @@
+---
+import "@styles/Forms.css";
+---
+<section>
+  <div class="cntr --cntr-frm">
+    <form 
+      class="download-form"
+      data-netlify="true"
+      name="download" 
+      method="POST" 
+      netlify-honeypot="bot-field" 
+      id="download-form"
+      >
+      <input type="hidden" name="form-name" value="download" />
+      <input type="hidden" name="resource" value={Astro.props.resource} />
+      <p class="hp-field" aria-hidden="true">
+        <label for="bot-field">Leave this field blank</label>
+        <input type="text" id="bot-field" name="bot-field" tabindex="-1" autocomplete="off" />
+      </p>
+      <div class="form__fields" id="form-fields">
+      { (Astro.props.formTitle || Astro.props.formDescription) && 
+        <div class="form__intro">
+          { Astro.props.formTitle && 
+            <h2 class="as-h3">{Astro.props.formTitle}</h2>
+          }
+          { Astro.props.formDescription && 
+            <p set:html={Astro.props.formDescription} />
+          }
+        </div>
+      }
+      {
+        Astro.props.emailAddress &&
+        <div class="form__group">
+          <label 
+            for="f-email">{Astro.props.emailAddress.label}</label>
+          <input 
+            type="email" 
+            name="email"
+            autocomplete="email" 
+            placeholder={Astro.props.emailAddress.placeholder} 
+            id="f-email"
+            required>
+        </div>
+      }
+
+      {Astro.props.submitButton && 
+        <button 
+          type="submit" 
+          class="btn --btn-cta">{Astro.props.submitButton.text}</button>
+      }
+      </div>
+      
+      {Astro.props.successMessage &&
+        <div
+          class="success__msg"
+          id="success-msg"
+          role="status"
+          aria-live="polite"
+          tabindex="-1">
+          <p set:html={Astro.props.successMessage.text} />
+          <a id="download-link" class="btn --btn-cta" href="#">
+            {Astro.props.downloadLabel ?? 'Download'}
+          </a>
+        </div>
+      }
+
+      {Astro.props.errorMessage && 
+        <div 
+          class="error__msg" 
+          id="form-error"
+          role="alert"
+          aria-live="assertive"
+          set:html={Astro.props.errorMessage.text} />
+      }
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#download-form')!;
+  const formFields = document.querySelector<HTMLElement>('#form-fields')!;
+  const successMsg = document.querySelector<HTMLElement>('#success-msg')!;
+  const errorMsg = document.querySelector<HTMLElement>('#form-error')!;
+  const downloadLink = document.querySelector<HTMLAnchorElement>('#download-link')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+    const body = new URLSearchParams(new FormData(form) as any).toString();
+
+    try {
+      // 1. Store the submission in Netlify Forms (this is the lead)
+      const stored = await fetch('/', { method: 'POST', headers, body });
+      if (!stored.ok) throw new Error('Form submission failed');
+
+      // 2. Ask our function for a signed link
+      const res = await fetch('/api/download-link', { method: 'POST', headers, body });
+      if (!res.ok) throw new Error('Could not create download link');
+      const { url } = await res.json();
+
+      // 3. Show it
+      downloadLink.href = url;
+      errorMsg.style.display = 'none';
+      form.reset();
+      formFields.style.display = 'none';
+      successMsg.style.display = 'block';
+      successMsg.focus();
+    } catch {
+      errorMsg.style.display = 'block';
+    }
+  });
+</script>

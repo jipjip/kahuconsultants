@@ -1,0 +1,62 @@
+---
+import Hero from '@components/Hero.astro';
+import Layout from '@layouts/Layout.astro';
+import DownloadForm from '@components/navigation/layouts/DownloadForm.astro';
+import ContactInfo from '@components/ContactInfo.astro'; 
+---
+
+<Layout 
+  pageName="Testpage"
+  pageDescription="Testpage"
+  type="article">
+	<Hero 
+    title = "Testpage",
+    description = "Fill the form to receive a link to the download",
+    heroType = "contact abstr1"
+  />
+
+  <section>
+    <div class="cntr">
+      <h2>We love to share.</h2>
+      <p>If you enter your email address below, you will receive a link to download the resource.</p>
+    </div>
+  </section>
+
+     <DownloadForm
+      resource="test-download"
+      formTitle = "Download Form"
+      formDescription = "Fill in your email address below to receive a link to the download."
+      downloadLabel="Download the PDF"
+      emailAddress = {{
+        label: "Email Address",
+        placeholder: "jane@company.com"
+      }}
+      submitButton = {{
+        text: "To the download",
+      }}
+      successMessage = {{
+        text: "Thank you for your test. This is just for testing purposes."
+      }}
+      errorMessage = {{
+        text: "Something went wrong sending the form"
+      }}
+   />
+
+  <ContactInfo
+    contactInfo={[
+      {
+        label: "Email",
+        text: "hello@kahuconsultants.com"
+      },{
+        label: "Services",
+        text: "EcoVadis · CDP · ESG Reporting · ESG Strategy"
+      },{
+        label: "Response",
+        text: "We aim to respond to all enquiries within one business day."
+      },{
+        label: "Approach",
+        text: "Initial consultations are always complimentary and without obligation."
+      }
+    ]} />
+  
+</Layout>
